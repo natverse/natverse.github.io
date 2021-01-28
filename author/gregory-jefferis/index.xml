@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gregory Jefferis on natverse</title><link>https://natverse.github.io/author/gregory-jefferis/</link><description>Recent content in Gregory Jefferis on natverse</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://natverse.github.io/author/gregory-jefferis/index.xml" rel="self" type="application/rss+xml"/><item><title>Get help!</title><link>https://natverse.github.io/help/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://natverse.github.io/help/</guid><description>
+&lt;p&gt;Thanks for using the natverse. We&amp;rsquo;re sorry you&amp;rsquo;re having trouble, but
+we&amp;rsquo;re here to help! To get help as quickly as possible, please read the following.&lt;/p&gt;
+&lt;h2 id=&#34;search&#34;&gt;Search&lt;/h2&gt;
+&lt;p&gt;The first thing is to see if anyone has had your problem before:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Search our &lt;a href=&#34;https://groups.google.com/forum/#!forum/nat-user&#34; target=&#34;_blank&#34;&gt;nat-user google group&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Search GitHub for &lt;a href=&#34;https://github.com/search?q=user%3Anatverse&amp;amp;type=Issues&#34; target=&#34;_blank&#34;&gt;issues across the whole natverse&lt;/a&gt;.
+You can add your own terms to the search in the search box in the top left of that page.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If that solves your problem, then great!&lt;/p&gt;
+&lt;h2 id=&#34;known-problems&#34;&gt;Known Problems&lt;/h2&gt;
+&lt;p&gt;If you need more help with a known problem:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you found a relevant thread on the &lt;a href=&#34;https://groups.google.com/forum/#!forum/nat-user&#34; target=&#34;_blank&#34;&gt;nat-user google group&lt;/a&gt;:
+please reply to that.&lt;/li&gt;
+&lt;li&gt;If you found a GitHub issue:
+please reply to that with more details (you&amp;rsquo;ll need a GitHub login) or just &lt;em&gt;like&lt;/em&gt; it to let us know you&amp;rsquo;re having trouble too.&lt;/li&gt;
+&lt;li&gt;If you&amp;rsquo;re not sure:
+ask a new question on the &lt;a href=&#34;https://groups.google.com/forum/#!forum/nat-user&#34; target=&#34;_blank&#34;&gt;nat-user google group&lt;/a&gt;
+linking to what you have found.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;new-problems&#34;&gt;New Problems&lt;/h2&gt;
+&lt;p&gt;If it looks like a new problem then:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you just have a question:
+please ask the &lt;a href=&#34;https://groups.google.com/forum/#!forum/nat-user&#34; target=&#34;_blank&#34;&gt;nat-user google group&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;If you need to report a &lt;em&gt;new&lt;/em&gt; bug:
+please file a GitHub issue for the relevant package.&lt;/li&gt;
+&lt;li&gt;If you&amp;rsquo;re not sure:
+please just ask the &lt;a href=&#34;https://groups.google.com/forum/#!forum/nat-user&#34; target=&#34;_blank&#34;&gt;nat-user google group&lt;/a&gt;! If your
+problem &lt;em&gt;is&lt;/em&gt; a bug or a feature request, you can easily return here and
+report it - and we may be able to point you to an existing report or workaround.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;good-questions-and-bug-reports&#34;&gt;Good Questions and Bug Reports&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Be specific&lt;/li&gt;
+&lt;li&gt;Include the code that triggered the problem&lt;/li&gt;
+&lt;li&gt;If at all possible, make a minimal &lt;strong&gt;repr&lt;/strong&gt;oducible &lt;strong&gt;ex&lt;/strong&gt;ample (a &lt;em&gt;reprex&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It will be much easier for us to help if we can run a &lt;em&gt;reprex&lt;/em&gt; on
+our own machine without your data. You might want to use sample data
+from a nat package to help, or refer to publicly available data online.&lt;/p&gt;
+&lt;p&gt;You can use the &lt;a href=&#34;https://reprex.tidyverse.org/&#34; target=&#34;_blank&#34;&gt;reprex&lt;/a&gt; package to help
+and read the &lt;a href=&#34;https://www.tidyverse.org/help/&#34; target=&#34;_blank&#34;&gt;Get help!&lt;/a&gt;
+section of the tidyverse site for more information on this.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Thanks for your help!&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;general-r-questions&#34;&gt;General R questions&lt;/h2&gt;
+&lt;p&gt;You may find that your question is more of a general R issue than a natverse
+issue. We&amp;rsquo;ll always try to help, but you may also want to check out other sources of support:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.r-project.org/help.html&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;r-help&lt;/strong&gt;&lt;/a&gt;: The core R project&amp;rsquo;s information about
+finding help. The mailing lists have a reputation for being a bit brusque but if you ask
+a good question you can get a response very quickly.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://community.rstudio.com&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;community.rstudio.com&lt;/strong&gt;&lt;/a&gt;: This is a friendly
+place to ask general questions albeit with a focus on the &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;
+and other packages written by the rstudio team.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Stack Overflow&lt;/strong&gt;&lt;/a&gt;. Google will often bring you here. It can
+be a good place to ask questions about specific code issues.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

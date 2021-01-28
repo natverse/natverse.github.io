@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>natverse</title><link>https://natverse.github.io/author/sri/</link><description>Recent content on natverse</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://natverse.github.io/author/sri/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting started</title><link>https://natverse.github.io/install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://natverse.github.io/install/</guid><description>
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;The natverse runs on top of R. If you have never installed R see the First time
+install and Step by Step illustrated guide at the bottom of this page.&lt;/p&gt;
+&lt;h3 id=&#34;basic-install&#34;&gt;Basic Install&lt;/h3&gt;
+&lt;p&gt;Install core natverse packages to get started by doing&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&amp;quot;natmanager&amp;quot;)
+natmanager::install(&#39;core&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;full-install&#34;&gt;Full Install&lt;/h3&gt;
+&lt;p&gt;Install all the packages in the natverse by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&amp;quot;natmanager&amp;quot;)
+natmanager::install(&#39;natverse&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You may need to make a GitHub account and personal access token
+(GITHUB_PAT) if you have not done this previously. See the &lt;a href=&#34;#github-rate-limiting&#34;&gt;GitHub Rate limiting&lt;/a&gt; and &lt;a href=&#34;#step-by-step-installation-guide&#34;&gt;Step by Step Installation Guide&lt;/a&gt; sections below.&lt;/p&gt;
+&lt;h2 id=&#34;run&#34;&gt;Run&lt;/h2&gt;
+&lt;p&gt;To load the core natverse and make it available in your current R session:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(natverse)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can check everything is working with some simple plots:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# plot some test data (?kcs20 for details)
+# Drosophila Kenyon cells processed from raw data at http://flycircuit.tw
+head(kcs20)
+open3d()
+plot3d(kcs20, col=type)
+# get help
+?nat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To find our more, explore our resources for &lt;a href=&#34;../learn&#34;&gt;learning the natverse&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;update&#34;&gt;Update&lt;/h2&gt;
+&lt;p&gt;To update all natverse packages (and their dependencies):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(natverse)
+# see what needs updating
+natverse_update()
+# actually update
+natverse_update(update = TRUE)
+# ... or if you don&#39;t want to answer any yes/no questions
+natverse_update(update = TRUE, upgrade=&#39;always&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
+&lt;h3 id=&#34;github-rate-limiting&#34;&gt;GitHub Rate limiting&lt;/h3&gt;
+&lt;p&gt;Unfortunately installing the full natverse suite makes many calls to the GitHub
+API, which is rate limited unless you have a GitHub account and present a
+&lt;code&gt;GITHUB_PAT&lt;/code&gt; authentication token. The &lt;code&gt;natmanager&lt;/code&gt; package will attempt to
+use a built-in PAT if you do not have one. However, if multiple users are
+installing the natverse simultaneously, you may get errors like&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Using github PAT from envvar GITHUB_PAT
+Error: Failed to install &#39;unknown package&#39; from GitHub:
+HTTP error 401.
+Bad credentials
+Rate limit remaining: 56/60
+Rate limit reset at: 2020-02-27 19:21:26 UTC
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To avoid these errors, do&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;natmanager::check_pat()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and this will guide you through the process of obtaining your own &lt;code&gt;GITHUB_PAT&lt;/code&gt;
+and telling R about it. See also the illustrated guide below.&lt;/p&gt;
+&lt;h3 id=&#34;other-install-issues&#34;&gt;Other install issues&lt;/h3&gt;
+&lt;p&gt;If you have any installation issues, some general tips:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start a clean R session&lt;/li&gt;
+&lt;li&gt;Start a clean R session if you had to update natmanager&lt;/li&gt;
+&lt;li&gt;make sure that you have recent R (&amp;gt;=3.6.0 recommended, R&amp;gt;=3.3.0 at a minimum)&lt;/li&gt;
+&lt;li&gt;try updating installed packages (&lt;code&gt;update.packages(ask=F)&lt;/code&gt; will update everything)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Still no luck?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;most install issues will be general R issues rather than anything
+specific to the natverse, so Google is your friend.&lt;/li&gt;
+&lt;li&gt;Search the &lt;a href=&#34;https://groups.google.com/forum/#!forum/nat-user&#34; target=&#34;_blank&#34;&gt;nat-user google group&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&amp;hellip; or use it to ask for help.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;first-time-install-prerequisites&#34;&gt;First time install - Prerequisites&lt;/h2&gt;
+&lt;p&gt;To install this package you need to have &lt;code&gt;R&lt;/code&gt; and &lt;code&gt;RStudio&lt;/code&gt; installed. Detailed
+instructions for each operating system are given below. You will also need a
+valid GitHub account to install the full suite of natverse packages. You will be
+prompted to do this by the natmanager package, but we recommend following the
+illustrated &lt;a href=&#34;#step-by-step-installation-guide&#34;&gt;Step by Step Installation Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;mac-os-x&#34;&gt;Mac OS X&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;code&gt;R&lt;/code&gt; from here:
+&lt;a href=&#34;http://cloud.r-project.org/bin/macosx/&#34; target=&#34;_blank&#34;&gt;r-installation&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;code&gt;RStudio&lt;/code&gt;, from here:
+&lt;a href=&#34;https://rstudio.com/products/rstudio/download/#download&#34; target=&#34;_blank&#34;&gt;RStudio-installation&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Start &lt;code&gt;RStudio&lt;/code&gt; from Launchpad&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;To use the rgl package for 3D visualisation you may also need to install
+the &lt;a href=&#34;https://www.xquartz.org/&#34; target=&#34;_blank&#34;&gt;Xquartz X11 system&lt;/a&gt;, which is also available by
+following links from the &lt;a href=&#34;https://cloud.r-project.org/bin/macosx/&#34; target=&#34;_blank&#34;&gt;CRAN Mac OS X page&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;windows&#34;&gt;Windows&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;code&gt;R&lt;/code&gt; from here:
+&lt;a href=&#34;http://cloud.r-project.org/bin/windows/base/&#34; target=&#34;_blank&#34;&gt;r-installation&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;code&gt;RStudio&lt;/code&gt;, for Windows from here:
+&lt;a href=&#34;https://rstudio.com/products/rstudio/download/#download&#34; target=&#34;_blank&#34;&gt;RStudio-installation&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Start &lt;code&gt;RStudio&lt;/code&gt; from Programs menu&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;linux-ubuntu&#34;&gt;Linux (Ubuntu)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;code&gt;R&lt;/code&gt;, in terminal type below:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r,&#34;&gt;sudo apt-get install libopenblas-base r-base
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;code&gt;RStudio&lt;/code&gt;, in terminal type below:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r,&#34;&gt;sudo apt-get install gdebi
+cd ~/Downloads
+wget https://download1.rstudio.org/rstudio-xenial-1.1.419-amd64.deb
+sudo gdebi rstudio-xenial-1.1.419-amd64.deb
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Start &lt;code&gt;RStudio&lt;/code&gt;, in terminal type below:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r,&#34;&gt;rstudio
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;step-by-step-installation-guide&#34;&gt;Step by Step Installation Guide&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step0.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step3.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step4.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step5.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step6.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step7.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step8.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step9_10.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://natverse.github.io/images/installation_images/Step11.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;</description></item></channel></rss>

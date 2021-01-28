@@ -1,0 +1,61 @@
+<!doctype html><html><head><!doctype html><html lang=en-us><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/main-site.css><link rel=stylesheet href=/css/fa5-all.css><style type=text/css>body{background-color:#fff;color:#1a1917}a{color:#1a9a9d}a:hover{color:#1a9a9d}#homeContent .band.first{background-color:#fff}#homeContent .band.second{background-color:#f0eee9}#homeContent .band.third{background-color:#fff}#rStudioHeader{background-color:#000;color:#fff}#rStudioHeader .productName{color:#fff}#rStudioHeader .productName:hover{color:#deef03}#rStudioHeader #menu .menuItem.a{background-color:#75aadb;color:#fff}#rStudioHeader #menu .menuItem:hover{background-color:#969696;color:#fff}#rStudioHeader #menu .menuItem.current{background-color:#fff;color:#519199;text-decoration:none}#rStudioFooter.band{background-color:#767381}#rStudioFooter .bandContent #copyright{color:#e3eef8}table tbody tr:nth-child(even){background-color:#f7faff}table tbody tr:nth-child(odd){background-color:#fff}</style><link rel=stylesheet href=/css/><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=apple-mobile-web-app-capable content=yes><meta name=og:image content=https://raw.githubusercontent.com/natverse/natverse_hugo/dev_pages/static/images/hex-natverse_logo.png><meta name=generator content="Hugo 0.54.0"><title>Getting started - natverse</title><meta property=og:title content="Getting started - natverse"><meta property=og:type content=article><meta name=twitter:card content=summary><meta name=twitter:image content=https://www.tidyverse.org/articles/-sq.jpg><meta property=description content><meta property=og:description content><link rel=apple-touch-icon sizes=180x180 href=/images/favicons/natverse_favicon.png><link rel=icon type=image/png sizes=32x32 href=/images/favicons/natverse_favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/images/favicons/natverse_favicon-16x16.png><link rel=manifest href=/images/favicons/site.webmanifest><link rel=mask-icon href=/images/favicons/safari-pinned-tab.svg><link rel="shortcut icon" href=/images/favicons/natverse_favicon.ico><meta name=msapplication-TileColor content=#da532c><meta name=msapplication-config href=/images/favicons/browserconfig.xml><script type=text/javascript src=/js/jquery-1.11.0.min.js></script><script type=text/javascript src=/js/site.js></script><link href=//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css rel=stylesheet type=text/css><link rel=icon href=/images/favicons/natverse_favicon.ico><body><div id=appTidyverseSite class="shrinkHeader alwaysShrinkHeader"><div id=main><div id=rStudioHeader><div class=band><div class="innards bandContent"><div><a class=productName href=/>natverse</a></div><div id=menu><div id=menuToggler></div><div id=menuItems><a class="menuItem current" href=/install/>Install</a>
+<a class=menuItem href=/packages/>Packages</a>
+<a class=menuItem href=/gallery/>Gallery</a>
+<a class=menuItem href=/learn/>Learn</a>
+<a class=menuItem href=/news/>Articles</a>
+<a class=menuItem href=/publications/>Publications</a>
+<a class=menuItem href=/help/>Help</a>
+<a class=menuItem href=/contribute/>Contribute</a>
+<a class=menuItem href=/author/>Team</a></div></div></div></div></div></head><body><div class="band padForHeader pushFooter"><div class=bandContent><div class="full splitColumns withMobileMargins"><div class=column75><h1 class=article-title>Getting started</h1><div class=article-header></div><div class=article-content><h2 id=installation>Installation</h2><p>The natverse runs on top of R. If you have never installed R see the First time
+install and Step by Step illustrated guide at the bottom of this page.</p><h3 id=basic-install>Basic Install</h3><p>Install core natverse packages to get started by doing</p><pre><code>install.packages(&quot;natmanager&quot;)
+natmanager::install('core')
+</code></pre><h3 id=full-install>Full Install</h3><p>Install all the packages in the natverse by running:</p><pre><code>install.packages(&quot;natmanager&quot;)
+natmanager::install('natverse')
+</code></pre><p>You may need to make a GitHub account and personal access token
+(GITHUB_PAT) if you have not done this previously. See the <a href=#github-rate-limiting>GitHub Rate limiting</a> and <a href=#step-by-step-installation-guide>Step by Step Installation Guide</a> sections below.</p><h2 id=run>Run</h2><p>To load the core natverse and make it available in your current R session:</p><pre><code>library(natverse)
+</code></pre><p>You can check everything is working with some simple plots:</p><pre><code># plot some test data (?kcs20 for details)
+# Drosophila Kenyon cells processed from raw data at http://flycircuit.tw
+head(kcs20)
+open3d()
+plot3d(kcs20, col=type)
+# get help
+?nat
+</code></pre><p>To find our more, explore our resources for <a href=../learn>learning the natverse</a>.</p><h2 id=update>Update</h2><p>To update all natverse packages (and their dependencies):</p><pre><code>library(natverse)
+# see what needs updating
+natverse_update()
+# actually update
+natverse_update(update = TRUE)
+# ... or if you don't want to answer any yes/no questions
+natverse_update(update = TRUE, upgrade='always')
+</code></pre><h2 id=troubleshooting>Troubleshooting</h2><h3 id=github-rate-limiting>GitHub Rate limiting</h3><p>Unfortunately installing the full natverse suite makes many calls to the GitHub
+API, which is rate limited unless you have a GitHub account and present a
+<code>GITHUB_PAT</code> authentication token. The <code>natmanager</code> package will attempt to
+use a built-in PAT if you do not have one. However, if multiple users are
+installing the natverse simultaneously, you may get errors like</p><pre><code>Using github PAT from envvar GITHUB_PAT
+Error: Failed to install 'unknown package' from GitHub:
+  HTTP error 401.
+  Bad credentials
+  Rate limit remaining: 56/60
+  Rate limit reset at: 2020-02-27 19:21:26 UTC
+</code></pre><p>To avoid these errors, do</p><pre><code>natmanager::check_pat()
+</code></pre><p>and this will guide you through the process of obtaining your own <code>GITHUB_PAT</code>
+and telling R about it. See also the illustrated guide below.</p><h3 id=other-install-issues>Other install issues</h3><p>If you have any installation issues, some general tips:</p><ul><li>Start a clean R session</li><li>Start a clean R session if you had to update natmanager</li><li>make sure that you have recent R (&gt;=3.6.0 recommended, R&gt;=3.3.0 at a minimum)</li><li>try updating installed packages (<code>update.packages(ask=F)</code> will update everything)</li></ul><p>Still no luck?</p><ul><li>most install issues will be general R issues rather than anything
+specific to the natverse, so Google is your friend.</li><li>Search the <a href=https://groups.google.com/forum/#!forum/nat-user target=_blank>nat-user google group</a>.</li><li>&hellip; or use it to ask for help.</li></ul><h2 id=first-time-install-prerequisites>First time install - Prerequisites</h2><p>To install this package you need to have <code>R</code> and <code>RStudio</code> installed. Detailed
+instructions for each operating system are given below. You will also need a
+valid GitHub account to install the full suite of natverse packages. You will be
+prompted to do this by the natmanager package, but we recommend following the
+illustrated <a href=#step-by-step-installation-guide>Step by Step Installation Guide</a>.</p><h3 id=mac-os-x>Mac OS X</h3><ol><li><p>Install <code>R</code> from here:
+<a href=http://cloud.r-project.org/bin/macosx/ target=_blank>r-installation</a></p></li><li><p>Install <code>RStudio</code>, from here:
+<a href=https://rstudio.com/products/rstudio/download/#download target=_blank>RStudio-installation</a></p></li><li><p>Start <code>RStudio</code> from Launchpad</p></li><li><p>To use the rgl package for 3D visualisation you may also need to install
+the <a href=https://www.xquartz.org/ target=_blank>Xquartz X11 system</a>, which is also available by
+following links from the <a href=https://cloud.r-project.org/bin/macosx/ target=_blank>CRAN Mac OS X page</a>.</p></li></ol><h3 id=windows>Windows</h3><ol><li><p>Install <code>R</code> from here:
+<a href=http://cloud.r-project.org/bin/windows/base/ target=_blank>r-installation</a></p></li><li><p>Install <code>RStudio</code>, for Windows from here:
+<a href=https://rstudio.com/products/rstudio/download/#download target=_blank>RStudio-installation</a></p></li><li><p>Start <code>RStudio</code> from Programs menu</p></li></ol><h3 id=linux-ubuntu>Linux (Ubuntu)</h3><ol><li><p>Install <code>R</code>, in terminal type below:</p><pre><code class=language-r,>sudo apt-get install libopenblas-base r-base
+</code></pre></li><li><p>Install <code>RStudio</code>, in terminal type below:</p><pre><code class=language-r,>sudo apt-get install gdebi
+cd ~/Downloads
+wget https://download1.rstudio.org/rstudio-xenial-1.1.419-amd64.deb
+sudo gdebi rstudio-xenial-1.1.419-amd64.deb
+</code></pre></li><li><p>Start <code>RStudio</code>, in terminal type below:</p><pre><code class=language-r,>rstudio
+</code></pre></li></ol><h2 id=step-by-step-installation-guide>Step by Step Installation Guide</h2><p><img src=/images/installation_images/Step0.png alt></p><p><img src=/images/installation_images/Step1.png alt></p><p><img src=/images/installation_images/Step2.png alt></p><p><img src=/images/installation_images/Step3.png alt></p><p><img src=/images/installation_images/Step4.png alt></p><p><img src=/images/installation_images/Step5.png alt></p><p><img src=/images/installation_images/Step6.png alt></p><p><img src=/images/installation_images/Step7.png alt></p><p><img src=/images/installation_images/Step8.png alt></p><p><img src=/images/installation_images/Step9_10.png alt></p><p><img src=/images/installation_images/Step11.png alt></p><hr><strong>By:</strong>
+<a href=https://natverse.github.io/author/sri/>Sridhar Jagannathan</a> &
+<a href=https://natverse.github.io/author/greg/>Gregory Jefferis</a></div></div><div class=column25><div class="section hideOnMobile"><div class=sectionTitle>Contents</div><nav id=TableOfContents><ul><li><ul><li><a href=#installation>Installation</a><ul><li><a href=#basic-install>Basic Install</a></li><li><a href=#full-install>Full Install</a></li></ul></li><li><a href=#run>Run</a></li><li><a href=#update>Update</a></li><li><a href=#troubleshooting>Troubleshooting</a><ul><li><a href=#github-rate-limiting>GitHub Rate limiting</a></li><li><a href=#other-install-issues>Other install issues</a></li></ul></li><li><a href=#first-time-install-prerequisites>First time install - Prerequisites</a><ul><li><a href=#mac-os-x>Mac OS X</a></li><li><a href=#windows>Windows</a></li><li><a href=#linux-ubuntu>Linux (Ubuntu)</a></li></ul></li><li><a href=#step-by-step-installation-guide>Step by Step Installation Guide</a></li></ul></li></ul></nav></div></div></div></div></div><div id=rStudioFooter class=band><div class=bandContent><div id=logos><a href=https://github.com/natverse/ class="footerLogo gitHub"></a><a href=https://twitter.com/hashtag/natverse class="footerLogo twitter"></a></div></div></div></div></div><script src=//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js></script><script src=//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js></script><script src=//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js></script><script>hljs.configure({languages:[]});hljs.initHighlightingOnLoad();</script></body></html></body></html>
